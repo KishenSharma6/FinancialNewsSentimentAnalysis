@@ -11,8 +11,11 @@ class Preprocessor:
         self.normalizedData= temp
     
     def tokenization(self):
+        from nltk.corpus import stopwords
+        stopWords= set(stopwords.words('english'))
         tokens= self.normalizedData.str.split()
-        self.tokens= tokens
+        filteredTokens= tokens.apply(lambda x: [token for token in x if token not in stopWords])
+        self.tokens= filteredTokens
    
     def lemmatization(self):
         self.lemmaTokens= self.tokens.apply(lemmatize_text)
