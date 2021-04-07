@@ -1,4 +1,5 @@
 import nltk
+import sklearn
 
 class Preprocessor:
     def __init__(self, rawData):
@@ -21,7 +22,12 @@ class Preprocessor:
         self.lemmaTokens= self.tokens.apply(lemmatize_text)
 
 class DataRepresentation:
-    pass
+    def __init__(self, text_data):
+        self.text= text_data
+
+    def split_data(self, trainingSize= .8, testSize= .2):
+        from sklearn.model_selection import train_test_split
+        pass
 
 
 def lemmatize_text(text):
