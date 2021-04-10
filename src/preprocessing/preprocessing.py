@@ -52,7 +52,7 @@ class DataRepresentation:
         """
         from sklearn.model_selection import train_test_split
         X_train, X_test, y_train, y_test= train_test_split(self.text, self.target,
-                                                           train_size= trainingSize, test_size=trainingSize, stratify=stratify, random_state= 24)
+                                                           train_size= trainingSize, test_size=testSize, stratify=stratify, random_state= 24)
         self.X_train= X_train
         self.y_train= y_train
         self.X_test= X_test
