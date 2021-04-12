@@ -1,4 +1,5 @@
 import sklearn
+import numpy as np
 
 class Metrics:
     def __init__(self, predictions, actual):

@@ -5,9 +5,7 @@ class Models:
     def __init__(self, training_data, target):
         self.training= training_data
         self.target= target
-    
-    
-    
+   
     def base_model_evaluation(self):
         #Initilialize Base Models
         from sklearn.linear_model import LogisticRegression
@@ -17,7 +15,7 @@ class Models:
         from sklearn.neighbors import KNeighborsClassifier
         from sklearn.svm import LinearSVC
         
-        logR= LogisticRegression(multi_class= "multinomial", n_jobs= -1)
+        logR= LogisticRegression(multi_class= "multinomial", n_jobs= -1, random_state= 24)
         mnb= MultinomialNB()
         randomF= RandomForestClassifier(n_jobs= -1, random_state= 24)
         knn= KNeighborsClassifier(n_jobs= -1)
@@ -37,3 +35,11 @@ class Models:
             print("Accuracy Standard Deviation: %s" % (round(np.std(scores['test_acc']),2)))
             print("Average F1 Macro: %s" % (round(np.mean(scores['test_f1_macro']),2)))
             print("Accuracy F1 Macro Standard Deviation: %s" % (round(np.std(scores['test_f1_macro']),2)))
+
+
+    def random_search_cv(self, name, estimator, parameters):
+        from sklearn.model_selection import RandomizedSearchCV
+        clf= RandomizedSearchCV(estimator, param_distributions= parameters,
+                                random_state= 24, cv= 5)
+        search= clf.fit(self.training, self.target)
+        self.name= search.best_estimator_
