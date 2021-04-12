@@ -11,20 +11,29 @@ class Models:
     def base_model_evaluation(self):
         #Initilialize Base Models
         from sklearn.linear_model import LogisticRegression
+        from sklearn.naive_bayes import MultinomialNB
+        from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
         from sklearn.ensemble import RandomForestClassifier
         from sklearn.neighbors import KNeighborsClassifier
         from sklearn.svm import LinearSVC
         
         logR= LogisticRegression(multi_class= "multinomial", n_jobs= -1)
+        mnb= MultinomialNB()
         randomF= RandomForestClassifier(n_jobs= -1, random_state= 24)
         knn= KNeighborsClassifier(n_jobs= -1)
         linearSVC= LinearSVC(multi_class= "crammer_singer", random_state= 24)
         
-        from sklearn.model_selection import cross_val_score
-        baseModels= [logR, randomF, knn, linearSVC]
-        for model in baseModels:
-            scores= cross_val_score(model, self.training, self.target, cv=5)
+        from sklearn.model_selection import cross_validate
+        baseModels= [logR, mnb, randomF, knn, linearSVC]
+        names= ['Logistic Regression', 'Naive Bayes', 'Random Forest', 'KNN', 'Linear SVC']
+        scoring = {'acc': 'accuracy',
+                   'f1_macro': 'f1_macro'}
+        for name, model in zip(names, baseModels):
+            scores= cross_validate(model, self.training, self.target, 
+                                    scoring= scoring, cv=5)
             print("=========================")
-            print("%s Scores: %s" % (model, scores))
-            print("Average Sccore: %s" % (round(np.mean(scores),2)))
-            print("Standard Deviations: %s" % (round(np.std(scores),2)))
+            print("%s Base Performance Metrics:" % (name))
+            print("Average Accuracy: %s" % (round(np.mean(scores['test_acc']),2)))
+            print("Accuracy Standard Deviation: %s" % (round(np.std(scores['test_acc']),2)))
+            print("Average F1 Macro: %s" % (round(np.mean(scores['test_f1_macro']),2)))
+            print("Accuracy F1 Macro Standard Deviation: %s" % (round(np.std(scores['test_f1_macro']),2)))
