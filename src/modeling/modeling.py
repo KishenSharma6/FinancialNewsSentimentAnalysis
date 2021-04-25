@@ -37,9 +37,12 @@ class Models:
             print("Accuracy F1 Macro Standard Deviation: %s" % (round(np.std(scores['test_f1_macro']),2)))
 
 
-    def random_search_cv(self, name, estimator, parameters):
+    def random_search_cv(self, estimator, parameters):
+        """
+        Apply RandomSearchCV and return tuned model
+        """
         from sklearn.model_selection import RandomizedSearchCV
         clf= RandomizedSearchCV(estimator, param_distributions= parameters,
                                 random_state= 24, cv= 5)
         search= clf.fit(self.training, self.target)
-        self.name= search.best_estimator_
+        return search   
