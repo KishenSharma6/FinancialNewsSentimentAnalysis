@@ -1,5 +1,6 @@
 paths:
   rawData: '/Users/ksharma/Documents/ML Engineer/Machine Learning/Projects/FinancialNewsSentimentAnalysis/Data/01_RawData/all-data.csv'  
+  processedData: '/Users/ksharma/Documents/ML Engineer/Machine Learning/Projects/FinancialNewsSentimentAnalysis/Data/02_ProcessedData'
   reports: '/Users/ksharma/Documents/ML Engineer/Machine Learning/Projects/FinancialNewsSentimentAnalysis/Reports/Figures'
   trainedModels: '/Users/ksharma/Documents/ML Engineer/Machine Learning/Projects/FinancialNewsSentimentAnalysis/Modeling/Trained Models'
 hyperparameters:
