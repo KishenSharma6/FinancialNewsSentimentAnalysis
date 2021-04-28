@@ -46,3 +46,9 @@ class Models:
                                 random_state= 24, cv= 5)
         search= clf.fit(self.training, self.target)
         return search   
+
+    def get_predictions(self, model):
+        """Returns predictions from model
+        """
+        predictions= model.predict(self.training)
+        return predictions

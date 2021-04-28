@@ -11,3 +11,8 @@ class Metrics:
         """
         from sklearn.metrics import confusion_matrix
         print(confusion_matrix(self.y, self.yhat))
+
+    def classification_metrics(self):
+        """Returns dictionary containing classification metrics of interest
+        """
+        

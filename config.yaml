@@ -1,7 +1,8 @@
 paths:
-  rawData: '/Users/ksharma/Documents/ML Engineer/Machine Learning/Projects/FinancialNewsSentimentAnalysis/Data/01_RawData/all-data.csv'  
   processedData: '/Users/ksharma/Documents/ML Engineer/Machine Learning/Projects/FinancialNewsSentimentAnalysis/Data/02_ProcessedData'
+  rawData: '/Users/ksharma/Documents/ML Engineer/Machine Learning/Projects/FinancialNewsSentimentAnalysis/Data/01_RawData/all-data.csv'  
   reports: '/Users/ksharma/Documents/ML Engineer/Machine Learning/Projects/FinancialNewsSentimentAnalysis/Reports/Figures'
+  home: '/Users/ksharma/Documents/ML Engineer/Machine Learning/Projects/FinancialNewsSentimentAnalysis'
   trainedModels: '/Users/ksharma/Documents/ML Engineer/Machine Learning/Projects/FinancialNewsSentimentAnalysis/Modeling/Trained Models'
 hyperparameters:
   logisticRegression:
